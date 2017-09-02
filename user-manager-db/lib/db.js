@@ -59,6 +59,20 @@ class Db {
     }
   }
 
+  async deleteUser (username, callback) {
+    try {
+      if (!username) return Promise.reject(new Error('username is empty'))
+
+      const user = await this.getUser(username)
+      const deleted = JSON.parse(JSON.stringify(user))
+      await user.destroy()
+
+      return Promise.resolve(deleted).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
   async setup (callback) {
     try {
       await this.sequelize.sync()

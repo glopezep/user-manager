@@ -32,7 +32,7 @@ test.serial('db#saveUser', async t => {
 })
 
 test.serial('db#getUser', async t => {
-  t.is(typeof db.saveUser, 'function', 'Should be a function')
+  t.is(typeof db.getUser, 'function', 'Should be a function')
 
   const userFixture = fixtures.getUser()
   await db.saveUser(userFixture)
@@ -50,7 +50,7 @@ test.serial('db#getUser', async t => {
 })
 
 test.serial('db#updateUser', async t => {
-  t.is(typeof db.saveUser, 'function', 'Should be a function')
+  t.is(typeof db.updateUser, 'function', 'Should be a function')
 
   const userFixture = fixtures.getUser()
   const newData = fixtures.getUser()
@@ -67,4 +67,21 @@ test.serial('db#updateUser', async t => {
   await t.throws(db.updateUser(null), /username is empty/)
   await t.throws(db.updateUser('foo'), /not found/)
   await t.throws(db.updateUser(plainUser.username, null), /new data is empty/)
+})
+
+test.serial('db#deleteUser', async t => {
+  t.is(typeof db.deleteUser, 'function', 'Should be a function')
+
+  const userFixture = fixtures.getUser()
+  await db.saveUser(userFixture)
+  const user = await db.deleteUser(userFixture.username)
+
+  t.is(user.id, userFixture.id)
+  t.is(user.fullname, userFixture.fullname)
+  t.is(user.username, userFixture.username)
+  t.is(user.email, userFixture.email)
+  t.is(user.password, userFixture.password)
+  t.is(user.avatar, userFixture.avatar)
+  await t.throws(db.deleteUser(null), /username is empty/)
+  await t.throws(db.deleteUser('foo'), /not found/)
 })
