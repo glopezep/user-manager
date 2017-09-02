@@ -36,6 +36,16 @@ class Db {
     }
   }
 
+  async getUsers (callback) {
+    try {
+      const users = await this.models.User.findAll()
+
+      return Promise.resolve(users).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
   async updateUser (username, data, callback) {
     try {
       if (!username) return Promise.reject(new Error('username is empty'))

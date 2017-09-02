@@ -49,6 +49,23 @@ test.serial('db#getUser', async t => {
   await t.throws(db.getUser('foo'), /not found/)
 })
 
+test.serial('db#getUsers', async t => {
+  t.is(typeof db.getUsers, 'function', 'Should be a function')
+
+  const userFixtures = fixtures.getUsers()
+  const saveUsers = []
+
+  userFixtures.forEach(user => {
+    saveUsers.push(db.saveUser(user))
+  })
+
+  await Promise.all(saveUsers)
+
+  const users = await db.getUsers()
+
+  t.is(users.length, userFixtures.length)
+})
+
 test.serial('db#updateUser', async t => {
   t.is(typeof db.updateUser, 'function', 'Should be a function')
 
