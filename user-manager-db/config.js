@@ -9,8 +9,5 @@ module.exports = {
     min: 0,
     idle: 10000
   },
-  setup: false,
-  query: {
-    raw: true
-  }
+  setup: false
 }

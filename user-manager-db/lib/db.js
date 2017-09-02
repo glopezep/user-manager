@@ -12,7 +12,7 @@ class Db {
 
   async saveUser (user, callback) {
     try {
-      if (!user) return Promise.reject(new Error('empty data'))
+      if (!user) return Promise.reject(new Error('user data is empty'))
       const created = await this.models.User.create(user)
       return Promise.resolve(created).asCallback(callback)
     } catch (e) {
@@ -22,7 +22,7 @@ class Db {
 
   async getUser (username, callback) {
     try {
-      if (!username) return Promise.reject(new Error('empty data'))
+      if (!username) return Promise.reject(new Error('username is empty'))
 
       const user = await this.models.User.findOne({
         where: { username }
@@ -31,6 +31,29 @@ class Db {
       if (!user) return Promise.reject(new Error('not found'))
 
       return Promise.resolve(user).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
+  async updateUser (username, data, callback) {
+    try {
+      if (!username) return Promise.reject(new Error('username is empty'))
+
+      const user = await this.getUser(username)
+
+      if (!data) return Promise.reject(new Error('new data is empty'))
+
+      const updated = await user.update(data, { fields: [
+        'fullname',
+        'username',
+        'email',
+        'password',
+        'avatar',
+        'updatedAt'
+      ]})
+
+      return Promise.resolve(updated).asCallback(callback)
     } catch (e) {
       return Promise.reject(e).asCallback(callback)
     }
