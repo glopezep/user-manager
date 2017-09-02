@@ -28,4 +28,23 @@ test.serial('db#saveUser', async t => {
   t.is(plainUser.email, userFixture.email)
   t.is(plainUser.password, userFixture.password)
   t.is(plainUser.avatar, userFixture.avatar)
+  await t.throws(db.saveUser(null), /empty data/)
+})
+
+test.serial('db#getUser', async t => {
+  t.is(typeof db.saveUser, 'function', 'Should be a function')
+
+  const userFixture = fixtures.getUser()
+  await db.saveUser(userFixture)
+  const plainUser = await db.getUser(userFixture.username)
+  console.log(plainUser)
+
+  t.is(plainUser.id, userFixture.id)
+  t.is(plainUser.fullname, userFixture.fullname)
+  t.is(plainUser.username, userFixture.username)
+  t.is(plainUser.email, userFixture.email)
+  t.is(plainUser.password, userFixture.password)
+  t.is(plainUser.avatar, userFixture.avatar)
+  await t.throws(db.getUser(null), /empty data/)
+  await t.throws(db.getUser('foo'), /not found/)
 })
