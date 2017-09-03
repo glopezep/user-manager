@@ -174,6 +174,7 @@ test.serial('db#getUsersByGroup', async t => {
 
   const users = await db.getUsersByGroup(groupFixture.id)
   t.is(users.length, userFixtures.length)
+  await t.throws(db.getUsersByGroup(), /not found/)
 })
 
 test.serial('db#updateUser', async t => {
