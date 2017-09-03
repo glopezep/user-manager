@@ -36,6 +36,16 @@ class Db {
     }
   }
 
+  async getGroups (callback) {
+    try {
+      const groups = await this.models.Group.findAll()
+
+      return Promise.resolve(groups).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
   async saveUser (user, callback) {
     try {
       if (!user) return Promise.reject(new Error('user data is empty'))

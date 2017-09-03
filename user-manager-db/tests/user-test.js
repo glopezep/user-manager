@@ -45,6 +45,23 @@ test.serial('db#getGroup', async t => {
   await t.throws(db.getGroup('foo'), /not found/)
 })
 
+test.serial('db#getUsers', async t => {
+  t.is(typeof db.getGroups, 'function', 'Should be a function')
+
+  const groupFixtures = fixtures.getGroups()
+  const saveGroups = []
+
+  groupFixtures.forEach(group => {
+    saveGroups.push(db.saveGroup(group))
+  })
+
+  await Promise.all(saveGroups)
+
+  const groups = await db.getGroups()
+
+  t.is(groups.length, groupFixtures.length)
+})
+
 test.serial('db#saveUser', async t => {
   t.is(typeof db.saveUser, 'function', 'Should be a function')
 
