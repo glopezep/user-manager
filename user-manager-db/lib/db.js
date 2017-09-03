@@ -7,8 +7,8 @@ const defaults = require('../config')
 class Db {
   constructor (config = defaults) {
     this.config = config
-    this.sequelize = setupSequelize(this.config)
     this.models = getModels(this.config)
+    this.sequelize = setupSequelize(this.config)
   }
 
   async saveGroup (group, callback) {
@@ -26,7 +26,8 @@ class Db {
       if (!id) throw new Error('id is empty')
 
       const group = await this.models.Group.findOne({
-        where: { id }
+        where: { id },
+        include: [ { all: true, nested: true } ]
       })
 
       if (!group) throw new Error('not found')
@@ -39,7 +40,9 @@ class Db {
 
   async getGroups (callback) {
     try {
-      const groups = await this.models.Group.findAll()
+      const groups = await this.models.Group.findAll({
+        include: [ { all: true, nested: true } ]
+      })
 
       if (!groups.length) throw new Error('not found')
 
@@ -100,7 +103,8 @@ class Db {
       if (!username) throw new Error('username is empty')
 
       const user = await this.models.User.findOne({
-        where: { username }
+        where: { username },
+        include: [ { all: true, nested: true } ]
       })
 
       if (!user) throw new Error('not found')
@@ -113,7 +117,24 @@ class Db {
 
   async getUsers (callback) {
     try {
-      const users = await this.models.User.findAll()
+      const users = await this.models.User.findAll({
+        include: [ { all: true, nested: true } ]
+      })
+
+      if (!users.length) throw new Error('not found')
+
+      return Promise.resolve(users).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
+  async getUsersByGroup (groupId, callback) {
+    try {
+      const users = await this.models.User.findAll({
+        where: { groupId },
+        include: [ { all: true, nested: true } ]
+      })
 
       if (!users.length) throw new Error('not found')
 

@@ -158,7 +158,23 @@ test.serial('db#getUsers - empty', async t => {
   await t.throws(db.getUsers(), /not found/)
 })
 
-test.todo('db#getUsersByGroup')
+test.serial('db#getUsersByGroup', async t => {
+  const groupFixture = fixtures.getGroup()
+  const userFixtures = fixtures.getUsers()
+  const saveUsers = []
+
+  await db.saveGroup(groupFixture)
+
+  userFixtures.forEach(user => {
+    user.groupId = groupFixture.id
+    saveUsers.push(db.saveUser(user))
+  })
+
+  await Promise.all(saveUsers)
+
+  const users = await db.getUsersByGroup(groupFixture.id)
+  t.is(users.length, userFixtures.length)
+})
 
 test.serial('db#updateUser', async t => {
   t.is(typeof db.updateUser, 'function', 'Should be a function')
