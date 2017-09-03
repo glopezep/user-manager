@@ -16,7 +16,7 @@ async function setup () {
       {
         type: 'confirm',
         name: 'setup',
-        message: 'This will destroy your database, are you sure?'
+        message: 'This will destroy your user and group tables if exist in your database, are you sure?'
       }
     ])
 
@@ -25,14 +25,16 @@ async function setup () {
     }
   }
 
-  db.setup().then(msg => {
+  try {
+    await db.drop()
+    const msg = await db.setup()
     console.log(`${chalk.green('[success]')} ${msg}`)
     process.exit(0)
-  }).catch(err => {
-    console.error(`${chalk.red('[error]')} ${err.message}`)
-    console.error(err.stack)
+  } catch (e) {
+    console.error(`${chalk.red('[error]')} ${e.message}`)
+    console.error(e.stack)
     process.exit(1)
-  })
+  }
 }
 
 setup()
