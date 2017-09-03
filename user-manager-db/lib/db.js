@@ -65,6 +65,20 @@ class Db {
     }
   }
 
+  async deleteGroup (id, callback) {
+    try {
+      if (!id) return Promise.reject(new Error('id is empty'))
+
+      const grouo = await this.getGroup(id)
+      const deleted = JSON.parse(JSON.stringify(grouo))
+      await grouo.destroy()
+
+      return Promise.resolve(deleted).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
   async saveUser (user, callback) {
     try {
       if (!user) return Promise.reject(new Error('user data is empty'))
