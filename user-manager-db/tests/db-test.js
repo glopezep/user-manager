@@ -62,6 +62,12 @@ test.serial('db#getGroups', async t => {
   t.is(groups.length, groupFixtures.length)
 })
 
+test.serial('db#getGroups - empty', async t => {
+  t.is(typeof db.getGroups, 'function', 'Should be a function')
+
+  await t.throws(db.getGroups(), /not found/)
+})
+
 test.serial('db#updateGroup', async t => {
   t.is(typeof db.updateGroup, 'function', 'Should be a function')
 
@@ -76,7 +82,7 @@ test.serial('db#updateGroup', async t => {
   t.is(plainGroup.description, newData.description)
   await t.throws(db.updateGroup(null), /id is empty/)
   await t.throws(db.updateGroup('foo'), /not found/)
-  await t.throws(db.updateGroup(plainGroup.id, null), /new data is empty/)
+  await t.throws(db.updateGroup(plainGroup.id, null), /data is empty/)
 })
 
 test.serial('db#deleteGroup', async t => {
@@ -143,6 +149,14 @@ test.serial('db#getUsers', async t => {
 
   t.is(users.length, userFixtures.length)
 })
+
+test.serial('db#getUsers - empty', async t => {
+  t.is(typeof db.getUsers, 'function', 'Should be a function')
+
+  await t.throws(db.getUsers(), /not found/)
+})
+
+test.todo('db#getUsersByGroup')
 
 test.serial('db#updateUser', async t => {
   t.is(typeof db.updateUser, 'function', 'Should be a function')

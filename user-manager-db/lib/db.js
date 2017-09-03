@@ -12,7 +12,7 @@ class Db {
 
   async saveGroup (group, callback) {
     try {
-      if (!group) return Promise.reject(new Error('group data is empty'))
+      if (!group) throw new Error('group data is empty')
       const created = await this.models.Group.create(group)
       return Promise.resolve(created).asCallback(callback)
     } catch (e) {
@@ -22,13 +22,13 @@ class Db {
 
   async getGroup (id, callback) {
     try {
-      if (!id) return Promise.reject(new Error('id is empty'))
+      if (!id) throw new Error('id is empty')
 
       const group = await this.models.Group.findOne({
         where: { id }
       })
 
-      if (!group) return Promise.reject(new Error('not found'))
+      if (!group) throw new Error('not found')
 
       return Promise.resolve(group).asCallback(callback)
     } catch (e) {
@@ -40,6 +40,8 @@ class Db {
     try {
       const groups = await this.models.Group.findAll()
 
+      if (!groups.length) throw new Error('not found')
+
       return Promise.resolve(groups).asCallback(callback)
     } catch (e) {
       return Promise.reject(e).asCallback(callback)
@@ -48,11 +50,11 @@ class Db {
 
   async updateGroup (id, data, callback) {
     try {
-      if (!id) return Promise.reject(new Error('id is empty'))
+      if (!id) throw new Error('id is empty')
 
       const group = await this.getGroup(id)
 
-      if (!data) return Promise.reject(new Error('new data is empty'))
+      if (!data) throw new Error('data is empty')
 
       const updated = await group.update(data, { fields: [
         'name',
@@ -67,11 +69,11 @@ class Db {
 
   async deleteGroup (id, callback) {
     try {
-      if (!id) return Promise.reject(new Error('id is empty'))
+      if (!id) throw new Error('id is empty')
 
-      const grouo = await this.getGroup(id)
-      const deleted = JSON.parse(JSON.stringify(grouo))
-      await grouo.destroy()
+      const group = await this.getGroup(id)
+      const deleted = JSON.parse(JSON.stringify(group))
+      await group.destroy()
 
       return Promise.resolve(deleted).asCallback(callback)
     } catch (e) {
@@ -81,7 +83,7 @@ class Db {
 
   async saveUser (user, callback) {
     try {
-      if (!user) return Promise.reject(new Error('user data is empty'))
+      if (!user) throw new Error('user data is empty')
       const created = await this.models.User.create(user)
       return Promise.resolve(created).asCallback(callback)
     } catch (e) {
@@ -91,13 +93,13 @@ class Db {
 
   async getUser (username, callback) {
     try {
-      if (!username) return Promise.reject(new Error('username is empty'))
+      if (!username) throw new Error('username is empty')
 
       const user = await this.models.User.findOne({
         where: { username }
       })
 
-      if (!user) return Promise.reject(new Error('not found'))
+      if (!user) throw new Error('not found')
 
       return Promise.resolve(user).asCallback(callback)
     } catch (e) {
@@ -109,6 +111,8 @@ class Db {
     try {
       const users = await this.models.User.findAll()
 
+      if (!users.length) throw new Error('not found')
+
       return Promise.resolve(users).asCallback(callback)
     } catch (e) {
       return Promise.reject(e).asCallback(callback)
@@ -117,11 +121,11 @@ class Db {
 
   async updateUser (username, data, callback) {
     try {
-      if (!username) return Promise.reject(new Error('username is empty'))
+      if (!username) throw new Error('username is empty')
 
       const user = await this.getUser(username)
 
-      if (!data) return Promise.reject(new Error('new data is empty'))
+      if (!data) throw new Error('new data is empty')
 
       const updated = await user.update(data, { fields: [
         'fullname',
@@ -140,7 +144,7 @@ class Db {
 
   async deleteUser (username, callback) {
     try {
-      if (!username) return Promise.reject(new Error('username is empty'))
+      if (!username) throw new Error('username is empty')
 
       const user = await this.getUser(username)
       const deleted = JSON.parse(JSON.stringify(user))

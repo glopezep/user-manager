@@ -8,7 +8,7 @@
   "license": "MIT",
   "scripts": {
     "setup": "DEBUG=user-manager:db:* node setup.js",
-    "test": "DEBUG=user-manager:db:* ava tests/*-test.js --verbose",
+    "test": "DEBUG=user-manager:db:* nyc --reporter=lcov ava tests/*-test.js --verbose",
     "lint": "eslint ./**/*.js"
   },
   "devDependencies": {
