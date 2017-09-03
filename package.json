@@ -8,5 +8,9 @@
   },
   "repository": "https://www.github.com/glopezep/user-manager",
   "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "user-manager-db": "file:./src/db"
+  },
+  "devDependencies": {}
 }
