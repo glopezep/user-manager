@@ -1,0 +1,12 @@
+{
+  "name": "user-manager",
+  "version": "1.0.0",
+  "description": "User Manger App",
+  "main": "index.js",
+  "scripts": {
+    "setup-db": "npm run setup --prefix lib/db"
+  },
+  "repository": "https://www.github.com/glopezep/user-manager",
+  "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",
+  "license": "MIT"
+}
