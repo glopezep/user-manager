@@ -1,6 +1,7 @@
 const Promise = require('bluebird')
 const setupSequelize = require('./setupSequelize')
 const getModels = require('../models')
+const utils = require('./utils')
 const defaults = require('../config')
 
 class Db {
@@ -84,6 +85,9 @@ class Db {
   async saveUser (user, callback) {
     try {
       if (!user) throw new Error('user data is empty')
+
+      user.password = utils.encrypt(user.password)
+
       const created = await this.models.User.create(user)
       return Promise.resolve(created).asCallback(callback)
     } catch (e) {
@@ -153,6 +157,24 @@ class Db {
       return Promise.resolve(deleted).asCallback(callback)
     } catch (e) {
       return Promise.reject(e).asCallback(callback)
+    }
+  }
+
+  async authenticate (username, password, callback) {
+    try {
+      if (!username || !password) {
+        return Promise.reject(new Error('username or password is empty'))
+      }
+
+      const user = await this.getUser(username)
+
+      if (user.get('password') !== utils.encrypt(password)) {
+        throw new Error('username or password incorrect')
+      }
+
+      return Promise.resolve(true).asCallback(callback)
+    } catch (e) {
+      return Promise.resolve(false).asCallback(callback)
     }
   }
 

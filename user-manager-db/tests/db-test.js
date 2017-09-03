@@ -1,6 +1,7 @@
 const test = require('ava')
 const debug = require('debug')('user-manager:db:test')
 const Db = require('../')
+const utils = require('../lib/utils')
 const config = require('../config')
 const fixtures = require('./fixtures')
 
@@ -103,14 +104,15 @@ test.serial('db#saveUser', async t => {
   t.is(typeof db.saveUser, 'function', 'Should be a function')
 
   const userFixture = fixtures.getUser()
+  const plainPassword = userFixture.password
   const created = await db.saveUser(userFixture)
   const plainUser = created.get({ plain: true })
 
   t.is(plainUser.id, userFixture.id)
   t.is(plainUser.fullname, userFixture.fullname)
-  t.is(plainUser.username, userFixture.username)
   t.is(plainUser.email, userFixture.email)
-  t.is(plainUser.password, userFixture.password)
+  t.is(plainUser.username, userFixture.username)
+  t.is(plainUser.password, utils.encrypt(plainPassword))
   t.is(plainUser.avatar, userFixture.avatar)
   await t.throws(db.saveUser(null), /user data is empty/)
 })
@@ -193,4 +195,22 @@ test.serial('db#deleteUser', async t => {
   t.is(user.avatar, userFixture.avatar)
   await t.throws(db.deleteUser(null), /username is empty/)
   await t.throws(db.deleteUser('foo'), /not found/)
+})
+
+test.serial('db#authenticate', async t => {
+  t.is(typeof db.authenticate, 'function', 'Should be a function')
+
+  const userFixture = fixtures.getUser()
+  const { username, password } = userFixture
+
+  await db.saveUser(userFixture)
+
+  const success = await db.authenticate(username, password)
+  const fail = await db.authenticate(username, 'foo')
+  const failure = await db.authenticate('foo', 'bar')
+
+  t.true(success)
+  t.false(fail)
+  t.false(failure)
+  await t.throws(db.authenticate(), /username or password is empty/)
 })
