@@ -3,7 +3,7 @@
 ## Usage
 
 ### Database Module
-#### Database functions can be used like promise or callback patterns
+Database functions can be used like promise or callback patterns
 
 ```js
 const { Db } = require('user-manager')
@@ -13,7 +13,7 @@ const config = {
   username: 'usernameDb',
   password: 'userPass',
   host: 'localhost',
-  dialect: 'mysql' || 'postgres',
+  dialect: 'mysql' // or postgres
   pool: {
     max: 10,
     min: 0,
