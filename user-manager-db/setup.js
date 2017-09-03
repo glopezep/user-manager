@@ -1,8 +1,11 @@
+const debug = require('debug')('user-manager:db:setup')
 const chalk = require('chalk')
 const inquirer = require('inquirer')
 const hasFlag = require('has-flag')
 const Db = require('./')
 const config = require('./config')
+
+config.logging = (msg) => debug(msg)
 
 const db = new Db(config)
 const prompt = inquirer.createPromptModule()

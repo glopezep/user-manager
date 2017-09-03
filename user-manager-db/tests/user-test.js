@@ -1,9 +1,11 @@
 const test = require('ava')
+const debug = require('debug')('user-manager:db:test')
 const Db = require('../')
 const config = require('../config')
 const fixtures = require('./fixtures')
 
 config.database = 'user_manager_db_test'
+config.logging = (msg) => debug(msg)
 
 const db = new Db(config)
 
@@ -13,6 +15,34 @@ test.beforeEach(async t => {
 
 test.afterEach.always(async t => {
   await db.drop()
+})
+
+test.serial('db#saveGroup', async t => {
+  t.is(typeof db.saveGroup, 'function', 'Should be a function')
+
+  const groupFixture = fixtures.getGroup()
+  const created = await db.saveGroup(groupFixture)
+  const plainGroup = created.get({ plain: true })
+
+  t.is(plainGroup.id, groupFixture.id)
+  t.is(plainGroup.name, groupFixture.name)
+  t.is(plainGroup.description, groupFixture.description)
+  await t.throws(db.saveGroup(null), /group data is empty/)
+})
+
+test.serial('db#getGroup', async t => {
+  t.is(typeof db.getGroup, 'function', 'Should be a function')
+
+  const groupFixture = fixtures.getGroup()
+  await db.saveGroup(groupFixture)
+  const group = await db.getGroup(groupFixture.id)
+  const plainGroup = group.get({ plain: true })
+
+  t.is(plainGroup.id, groupFixture.id)
+  t.is(plainGroup.name, groupFixture.name)
+  t.is(plainGroup.description, groupFixture.description)
+  await t.throws(db.getGroup(null), /id is empty/)
+  await t.throws(db.getGroup('foo'), /not found/)
 })
 
 test.serial('db#saveUser', async t => {

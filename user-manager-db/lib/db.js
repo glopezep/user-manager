@@ -6,8 +6,34 @@ const defaults = require('../config')
 class Db {
   constructor (config = defaults) {
     this.config = config
-    this.models = getModels(this.config)
     this.sequelize = setupSequelize(this.config)
+    this.models = getModels(this.config)
+  }
+
+  async saveGroup (group, callback) {
+    try {
+      if (!group) return Promise.reject(new Error('group data is empty'))
+      const created = await this.models.Group.create(group)
+      return Promise.resolve(created).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
+  async getGroup (id, callback) {
+    try {
+      if (!id) return Promise.reject(new Error('id is empty'))
+
+      const group = await this.models.Group.findOne({
+        where: { id }
+      })
+
+      if (!group) return Promise.reject(new Error('not found'))
+
+      return Promise.resolve(group).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
   }
 
   async saveUser (user, callback) {
