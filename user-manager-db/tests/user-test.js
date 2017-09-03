@@ -45,7 +45,7 @@ test.serial('db#getGroup', async t => {
   await t.throws(db.getGroup('foo'), /not found/)
 })
 
-test.serial('db#getUsers', async t => {
+test.serial('db#getGroups', async t => {
   t.is(typeof db.getGroups, 'function', 'Should be a function')
 
   const groupFixtures = fixtures.getGroups()
@@ -60,6 +60,23 @@ test.serial('db#getUsers', async t => {
   const groups = await db.getGroups()
 
   t.is(groups.length, groupFixtures.length)
+})
+
+test.serial('db#updateGroup', async t => {
+  t.is(typeof db.updateGroup, 'function', 'Should be a function')
+
+  const groupFixture = fixtures.getGroup()
+  const newData = fixtures.getGroup()
+  await db.saveGroup(groupFixture)
+  const user = await db.updateGroup(groupFixture.id, newData)
+  const plainGroup = user.get({ plain: true })
+
+  t.is(plainGroup.id, groupFixture.id)
+  t.is(plainGroup.name, newData.name)
+  t.is(plainGroup.description, newData.description)
+  await t.throws(db.updateGroup(null), /id is empty/)
+  await t.throws(db.updateGroup('foo'), /not found/)
+  await t.throws(db.updateGroup(plainGroup.id, null), /new data is empty/)
 })
 
 test.serial('db#saveUser', async t => {

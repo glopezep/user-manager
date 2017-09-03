@@ -46,6 +46,25 @@ class Db {
     }
   }
 
+  async updateGroup (id, data, callback) {
+    try {
+      if (!id) return Promise.reject(new Error('id is empty'))
+
+      const group = await this.getGroup(id)
+
+      if (!data) return Promise.reject(new Error('new data is empty'))
+
+      const updated = await group.update(data, { fields: [
+        'name',
+        'description'
+      ]})
+
+      return Promise.resolve(updated).asCallback(callback)
+    } catch (e) {
+      return Promise.reject(e).asCallback(callback)
+    }
+  }
+
   async saveUser (user, callback) {
     try {
       if (!user) return Promise.reject(new Error('user data is empty'))
