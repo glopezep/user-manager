@@ -1,0 +1,25 @@
+{
+  "name": "user-manager-api",
+  "version": "1.0.0",
+  "description": "User Manager API Rest",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/glopezep/user-manager"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^8.0.4",
+    "microrouter": "^2.2.2"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "micro-dev": "^1.2.2",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4"
+  }
+}

@@ -41,3 +41,24 @@ const user = db.saveUser(userData, (err, user) => {
   console.log(user)
 })
 ```
+
+### API Rest Module
+Run users serivce
+
+```bash
+npm run users
+
+or
+
+yarn users
+```
+
+Run auth serivce
+
+```bash
+npm run auth
+
+or
+
+yarn auth
+```
