@@ -43,22 +43,22 @@ const user = db.saveUser(userData, (err, user) => {
 ```
 
 ### API Rest Module
-Run users serivce
+Run users service
 
 ```bash
-npm run users
+npm run users-service
 
 or
 
-yarn users
+yarn users-service
 ```
 
-Run auth serivce
+Run groups service
 
 ```bash
-npm run auth
+npm run groups-service
 
 or
 
-yarn auth
+yarn groups-service
 ```

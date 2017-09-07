@@ -4,7 +4,9 @@
   "description": "User Manger App",
   "main": "index.js",
   "scripts": {
-    "setup-db": "npm run setup --prefix lib/db"
+    "setup-db": "npm run setup --prefix lib/user-manager-db",
+    "users-service": "npm run users --prefix lib/user-manager-api",
+    "groups-service": "npm run groups --prefix lib/user-manager-api"
   },
   "repository": "https://www.github.com/glopezep/user-manager",
   "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",

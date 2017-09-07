@@ -2,9 +2,10 @@
   "name": "user-manager-api",
   "version": "1.0.0",
   "description": "User Manager API Rest",
-  "main": "index.js",
   "scripts": {
-    "test": "NODE_ENV=test ava tests/*-test.js --verbose"
+    "test": "NODE_ENV=test ava tests/*-test.js --verbose",
+    "users": "micro -p 3000 users.js",
+    "groups": "micro -p 3001 groups.js"
   },
   "repository": {
     "type": "git",
