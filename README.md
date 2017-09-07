@@ -62,3 +62,20 @@ or
 
 yarn groups-service
 ```
+
+### API Client Module
+
+```js
+const client = userManager.createClient()
+
+client.saveUser(userData, (err, savedUser) => {
+  // do something with savedUser
+})
+
+client.saveUser().then(user => {
+  // do something with savedUser
+}).catch(err => {
+  // do something with user
+})
+
+```
