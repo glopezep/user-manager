@@ -1,0 +1,11 @@
+{
+  "name": "user-manager-utils",
+  "version": "1.0.0",
+  "description": "User Manger Utilities Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava tests/*-js --verbose"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT"
+}

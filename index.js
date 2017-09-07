@@ -1,4 +1,15 @@
 const Db = require('user-manager-db')
+const userService = require('./user-manager-api/users')
+const groupService = require('./user-manager-api/groups')
 const userManager = require('user-manager-client')
 
-module.exports = { Db, userManager }
+const services = {
+  users: userService,
+  groups: groupService
+}
+
+module.exports = {
+  Db,
+  userManager,
+  services
+}
