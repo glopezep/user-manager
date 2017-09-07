@@ -12,7 +12,8 @@
   "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "user-manager-db": "file:./src/db"
+    "user-manager-db": "file:./lib/user-manager-db",
+    "user-manager-client": "file:./lib/user-manager-client"
   },
   "devDependencies": {}
 }

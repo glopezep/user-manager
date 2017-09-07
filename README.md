@@ -66,7 +66,16 @@ yarn groups-service
 ### API Client Module
 
 ```js
-const client = userManager.createClient()
+const { userManager } = require('user-manager')
+
+const options = {
+  endpoints: {
+    users: 'http://api.example.com/users',
+    groups: 'http://api.example.com/groups'
+  }
+}
+
+const client = userManager.createClient(options)
 
 client.saveUser(userData, (err, savedUser) => {
   // do something with savedUser
