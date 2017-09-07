@@ -16,7 +16,8 @@
   "dependencies": {
     "micro": "^8.0.4",
     "microrouter": "^2.2.2",
-    "user-manager-db": "file:../user-manager-db"
+    "user-manager-db": "file:../user-manager-db",
+    "user-manager-utils": "file:../user-manager-utils"
   },
   "devDependencies": {
     "ava": "^0.22.0",

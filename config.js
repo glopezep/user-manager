@@ -1,4 +1,5 @@
 module.exports = {
+  secret: process.env.SECRET || 's3cr3t',
   db: {
     database: process.env.DB_NAME || 'user_manager_db',
     username: process.env.DB_USER || 'glopezep',
@@ -15,7 +16,8 @@ module.exports = {
   client: {
     endpoints: {
       users: process.env.API_CLIENT_USERS_URL || 'http://localhost:3000',
-      groups: process.env.API_CLIENT_GROUPS_URL ||  'http://localhost:3001'
+      groups: process.env.API_CLIENT_GROUPS_URL ||  'http://localhost:3001',
+      auth: process.env.API_CLIENT_AUTH_URL ||  'http://localhost:3002'
     }
   }
 }
