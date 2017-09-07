@@ -4,7 +4,7 @@
   "description": "User Manager API Rest",
   "main": "index.js",
   "scripts": {
-    "test": "ava"
+    "test": "NODE_ENV=test ava tests/*-test.js --verbose"
   },
   "repository": {
     "type": "git",
@@ -14,12 +14,16 @@
   "license": "MIT",
   "dependencies": {
     "micro": "^8.0.4",
-    "microrouter": "^2.2.2"
+    "microrouter": "^2.2.2",
+    "user-manager-db": "file:../user-manager-db"
   },
   "devDependencies": {
     "ava": "^0.22.0",
+    "eslint": "^4.6.1",
     "micro-dev": "^1.2.2",
+    "proxyquire": "^1.8.0",
     "request": "^2.81.0",
-    "request-promise-native": "^1.0.4"
+    "request-promise-native": "^1.0.4",
+    "test-listen": "^1.0.2"
   }
 }
