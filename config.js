@@ -11,5 +11,11 @@ module.exports = {
       idle: 10000
     },
     setup: false
+  },
+  client: {
+    endpoints: {
+      users: process.env.API_CLIENT_USERS_URL || 'http://localhost:3000',
+      groups: process.env.API_CLIENT_GROUPS_URL ||  'http://localhost:3001'
+    }
   }
 }
