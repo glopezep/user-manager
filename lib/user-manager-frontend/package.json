@@ -1,0 +1,37 @@
+{
+  "name": "user-manager-frontend",
+  "version": "1.0.0",
+  "description": "User Manager Frontend",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack -p --progress --colors",
+    "watch": "webpack --watch --progress --colors",
+    "start": "nodemon server.js"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.15.4",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1",
+    "react-router-dom": "^4.2.2",
+    "styled-jsx": "^1.0.10"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-react": "^6.24.1",
+    "nodemon": "^1.12.0",
+    "webpack": "^3.5.6"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ],
+    "plugins": [
+      "styled-jsx/babel"
+    ]
+  }
+}
