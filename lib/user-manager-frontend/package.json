@@ -6,11 +6,13 @@
   "scripts": {
     "build": "webpack -p --progress --colors",
     "watch": "webpack --watch --progress --colors",
-    "start": "nodemon server.js"
+    "start-dev": "nodemon server.js"
   },
   "author": "Guillermo Lopez",
   "license": "MIT",
   "dependencies": {
+    "body-parser": "^1.17.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.15.4",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",

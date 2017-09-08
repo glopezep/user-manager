@@ -6,7 +6,9 @@
   "scripts": {
     "setup-db": "npm run setup --prefix lib/user-manager-db",
     "users-service": "npm run users --prefix lib/user-manager-api",
-    "groups-service": "npm run groups --prefix lib/user-manager-api"
+    "groups-service": "npm run groups --prefix lib/user-manager-api",
+    "auth-service": "npm run groups --prefix lib/user-manager-api",
+    "start-frontend": "npm start --prefix lib/user-manager-frontend"
   },
   "repository": "https://www.github.com/glopezep/user-manager",
   "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",
