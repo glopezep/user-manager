@@ -5,17 +5,17 @@
   "main": "index.js",
   "scripts": {
     "setup-db": "npm run setup --prefix lib/user-manager-db",
-    "users-service": "npm run users --prefix lib/user-manager-api",
-    "groups-service": "npm run groups --prefix lib/user-manager-api",
-    "auth-service": "npm run groups --prefix lib/user-manager-api",
-    "start-frontend": "npm start --prefix lib/user-manager-frontend"
+    "users-service": "npm run users --prefix user-manager-api",
+    "groups-service": "npm run groups --prefix user-manager-api",
+    "auth-service": "npm run groups --prefix user-manager-api",
+    "start-frontend": "npm start --prefix user-manager-frontend"
   },
   "repository": "https://www.github.com/glopezep/user-manager",
   "author": "Guillermo Lopez <guillermolopez2529@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "user-manager-db": "file:./lib/user-manager-db",
-    "user-manager-client": "file:./lib/user-manager-client"
+    "user-manager-db": "file:./user-manager-db",
+    "user-manager-client": "file:./user-manager-client"
   },
   "devDependencies": {}
 }
