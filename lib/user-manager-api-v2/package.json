@@ -1,0 +1,21 @@
+{
+  "name": "user-manager-api-v2",
+  "version": "1.0.0",
+  "description": "User Manager Api v2",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava tests/*-test.js --verbose"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "chalk": "^2.1.0",
+    "graphql": "^0.11.3",
+    "graphql-server-micro": "^1.1.0",
+    "graphql-tools": "^1.2.2",
+    "micro": "^9.0.0",
+    "microrouter": "^2.2.2",
+    "user-manager-db": "file:../user-manager-db",
+    "user-manager-utils": "file:../user-manager-utils"
+  }
+}
