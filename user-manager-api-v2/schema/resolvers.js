@@ -6,6 +6,11 @@ const db = new Db(config.db)
 
 module.exports = {
   Mutation: {
+    saveUser: async (rootValue, args) => {
+      const user = await db.saveUser(args.user)
+      return JSON.parse(JSON.stringify(user))
+    },
+
     authenticate: async (rootValue, args) => {
       const { username, password } = args
       const auth = await db.authenticate(username, password)

@@ -3,7 +3,7 @@ const chalk = require('chalk')
 const inquirer = require('inquirer')
 const hasFlag = require('has-flag')
 const Db = require('./')
-const config = require('../../config')
+const config = require('../config')
 
 config.db.logging = (msg) => debug(msg)
 

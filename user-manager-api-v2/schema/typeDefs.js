@@ -31,7 +31,6 @@ module.exports = `
   }
 
   input newGroup {
-    id: ID!
     name: String!
     description: String!
   }
@@ -42,7 +41,6 @@ module.exports = `
   }
 
   input newUser {
-    id: ID!
     fullname: String!
     username: String!
     email: String!
