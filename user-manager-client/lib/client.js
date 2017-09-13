@@ -1,6 +1,6 @@
 const Promise = require('bluebird')
-const request = require('request-promise-native');
-const defaults = require('../../../config')
+const request = require('request-promise-native')
+const defaults = require('../../config')
 
 class Client {
   constructor (options) {

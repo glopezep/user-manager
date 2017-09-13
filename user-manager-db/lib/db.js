@@ -2,7 +2,7 @@ const Promise = require('bluebird')
 const utils = require('user-manager-utils')
 const setupSequelize = require('./setupSequelize')
 const getModels = require('../models')
-const defaults = require('../../../config')
+const defaults = require('../../config')
 
 class Db {
   constructor (config = defaults.db) {

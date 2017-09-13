@@ -2,7 +2,7 @@ const test = require('ava')
 const debug = require('debug')('user-manager:db:test')
 const utils = require('user-manager-utils')
 const Db = require('../')
-const config = require('../../../config')
+const config = require('../../config')
 const fixtures = require('./fixtures')
 
 config.db.database = 'user_manager_db_test'

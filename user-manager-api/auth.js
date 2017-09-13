@@ -3,7 +3,7 @@ const { router, post } = require('microrouter')
 const utils = require('user-manager-utils')
 const Db = require('user-manager-db')
 const DbStub = require('./tests/stub/db')
-const config = require('../../config')
+const config = require('../config')
 
 let db = new Db(config.db)
 

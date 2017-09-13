@@ -5,7 +5,7 @@ const request = require('request-promise-native')
 const utils = require('user-manager-utils')
 const fixtures = require('./fixtures')
 const auth = require('../auth')
-const config = require('../../../config')
+const config = require('../../config')
 
 test.beforeEach(async t => {
   const server = micro(auth)
