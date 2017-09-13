@@ -9,7 +9,10 @@
   "author": "Guillermo Lopez",
   "license": "MIT",
   "dependencies": {
+    "apollo-server-express": "^1.1.2",
+    "body-parser": "^1.18.1",
     "chalk": "^2.1.0",
+    "express": "^4.15.4",
     "graphql": "^0.11.3",
     "graphql-server-micro": "^1.1.0",
     "graphql-tools": "^1.2.2",
