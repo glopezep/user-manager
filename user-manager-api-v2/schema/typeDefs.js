@@ -18,7 +18,6 @@ module.exports = `
   }
 
   type Token {
-    err: Boolean
     value: String!
   }
 

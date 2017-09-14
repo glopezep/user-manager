@@ -5,6 +5,13 @@ const config = require('../../config')
 const db = new Db(config.db)
 
 module.exports = {
+  Query: {
+    user: async (rootValue, args) => {
+      const user = await db.getUser(args.username)
+      return JSON.parse(JSON.stringify(user))
+    },
+  },
+
   Mutation: {
     saveUser: async (rootValue, args) => {
       const user = await db.saveUser(args.user)
@@ -15,7 +22,9 @@ module.exports = {
       const { username, password } = args
       const auth = await db.authenticate(username, password)
 
-      if (!auth) return { err: true, value: 'username or password incorrect' }
+      if (!auth) {
+        return new Error('username or password incorrect')
+      }
 
       const token = await utils.signToken({ username }, config.secret)
 
