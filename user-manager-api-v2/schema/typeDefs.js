@@ -68,5 +68,6 @@ module.exports = `
     updateUser(username: String!, user: editableUser): User
     deleteUser(username: String!): User
     authenticate(username: String!, password: String!): Token
+    verifyToken(token: String!): User
   }
 `

@@ -74,6 +74,12 @@ module.exports = {
       const token = await utils.signToken({ username }, config.secret)
 
       return { token }
+    },
+
+    verifyToken: async (rootValue, args) => {
+      const decoded = await utils.verifyToken(args.token, config.secret)
+      const user = await db.getUser(decoded.username)
+      return JSON.parse(JSON.stringify(user))
     }
   }
 }
