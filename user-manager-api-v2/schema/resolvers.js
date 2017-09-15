@@ -6,16 +6,61 @@ const db = new Db(config.db)
 
 module.exports = {
   Query: {
+    group: async (rootValue, args) => {
+      const group = await db.getGroup(args.id)
+      return JSON.parse(JSON.stringify(group))
+    },
+
+    groups: async (rootValue, args) => {
+      const groups = await db.getGroups()
+      return JSON.parse(JSON.stringify(groups))
+    },
+
     user: async (rootValue, args) => {
       const user = await db.getUser(args.username)
       return JSON.parse(JSON.stringify(user))
     },
+
+    users: async (rootValue, args) => {
+      const users = await db.getUsers()
+      return JSON.parse(JSON.stringify(users))
+    },
+
+    usersByGroup: async (rootValue, args) => {
+      const users = await db.getUsersByGroup(args.id)
+      return JSON.parse(JSON.stringify(users))
+    }
   },
 
   Mutation: {
+    saveGroup: async (rootValue, args) => {
+      const group = await db.saveGroup(args.group)
+      return JSON.parse(JSON.stringify(group))
+    },
+
+    updateGroup: async (rootValue, args) => {
+      const group = await db.updateGroup(args.id, args.group)
+      return JSON.parse(JSON.stringify(group))
+    },
+
+    deleteGroup: async (rootValue, args) => {
+      const group = await db.deleteGroup(args.id)
+      return group
+    },
+
     saveUser: async (rootValue, args) => {
       const user = await db.saveUser(args.user)
       return JSON.parse(JSON.stringify(user))
+    },
+
+    updateUser: async (rootValue, args) => {
+      const user = await db.updateUser(args.username, args.user)
+      return JSON.parse(JSON.stringify(user))
+    },
+
+    deleteUser: async (rootValue, args) => {
+      const user = await db.deleteUser(args.username)
+      return user
     },
 
     authenticate: async (rootValue, args) => {

@@ -62,8 +62,8 @@ module.exports = `
     updateGroup(id: String!, group: editableGroup): Group
     deleteGroup(id: String!): Group
     saveUser(user: newUser): User
-    updateUser(id: String!, user: editableUser): User
-    deleteUser(id: String!): User
+    updateUser(username: String!, user: editableUser): User
+    deleteUser(username: String!): User
     authenticate(username: String!, password: String!): Token
   }
 `
