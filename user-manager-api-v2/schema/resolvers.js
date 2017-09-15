@@ -73,7 +73,7 @@ module.exports = {
 
       const token = await utils.signToken({ username }, config.secret)
 
-      return { value: token }
+      return { token }
     }
   }
 }

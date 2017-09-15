@@ -12,13 +12,14 @@ module.exports = `
     username: String!
     email: String!
     password: String!
-    avatar: String!
+    avatar: String
+    isActive: Boolean
     groupId: String
     group: Group
   }
 
   type Token {
-    value: String!
+    token: String!
   }
 
   type Query {
@@ -44,7 +45,8 @@ module.exports = `
     username: String!
     email: String!
     password: String!
-    avatar: String!
+    isActive: Boolean
+    avatar: String
     groupId: String
   }
 
@@ -54,6 +56,7 @@ module.exports = `
     email: String
     password: String
     avatar: String
+    isActive: Boolean
     groupId: String
   }
 

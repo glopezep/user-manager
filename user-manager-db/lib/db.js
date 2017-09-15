@@ -201,7 +201,7 @@ class Db {
 
   async setup (callback) {
     try {
-      await this.sequelize.sync()
+      await this.sequelize.sync({ force: true })
       return Promise.resolve('Setup Database Completed').asCallback(callback)
     } catch (e) {
       return Promise.reject(e).asCallback(callback)

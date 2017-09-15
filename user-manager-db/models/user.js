@@ -29,7 +29,12 @@ module.exports = (config) => {
     },
     avatar: {
       type: Sequelize.STRING,
-      allowNull: false
+      allowNull: true
+    },
+    isActive: {
+      type: Sequelize.BOOLEAN,
+      allowNull: false,
+      defaultValue: true
     }
   })
 
