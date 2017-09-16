@@ -1,6 +1,6 @@
 {
   "name": "user-manager-db",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "User Manager Database",
   "main": "index.js",
   "repository": "https://www.github.com/glopezep/user-manager",

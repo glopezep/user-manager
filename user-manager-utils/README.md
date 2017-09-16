@@ -24,3 +24,12 @@ utils.encrypt(password, (err, hash) => {
   // do something with hash
 })
 ```
+
+## API
+
+```js
+utils.encrypt(password, [callback]) -> hash
+utils.signToken(token, secret, [options], [callback]) -> token
+utils.verifyToken(token, secret, [options], [callback]) -> decoded
+utils.extractToken(req, [callback]) -> token
+```
