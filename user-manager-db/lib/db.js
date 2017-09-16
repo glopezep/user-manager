@@ -158,6 +158,8 @@ class Db {
         'email',
         'password',
         'avatar',
+        'isActive',
+        'groupId',
         'updatedAt'
       ]})
 
