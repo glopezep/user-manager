@@ -28,7 +28,9 @@ const user = db.saveUser(userData).then(user => {
   // do something with error
   console.log(err.message)
 })
-
+```
+Or using callbacks
+```js
 const user = db.saveUser(userData, (err, user) => {
   if (err) {
     // do something with error
@@ -38,4 +40,20 @@ const user = db.saveUser(userData, (err, user) => {
   console.log(user)
 })
 
+```
+
+## API
+
+```js
+db.saveGroup(group, [callback]) -> Group
+db.getGroup(groupId, [callback]) -> Group
+db.getGroups([callback]) -> [Group]
+db.updateGroup(groupId, data, [callback]) -> Group
+db.deleteGroup(groupId, [callback]) -> Group
+db.saveUser(user, [callback]) -> User
+db.getUser(userId, [callback]) -> User
+db.getUsers([callback]) -> [User]
+db.getUsersByGroup(groupId, [callback]) -> [User]
+db.updateUser(userId, data, [callback]) -> User
+db.deleteUser(userId, [callback]) -> User
 ```
