@@ -15,7 +15,7 @@ exports.signToken = (payload, secret, options, callback) => {
       if (err) reject(err)
       resolve(token)
     })
-  })
+  }).asCallback(callback)
 }
 
 exports.verifyToken = (token, secret, options, callback) => {
@@ -24,7 +24,7 @@ exports.verifyToken = (token, secret, options, callback) => {
       if (err) return reject(err)
       resolve(decoded)
     })
-  })
+  }).asCallback(callback)
 }
 
 exports.extractToken = (req, callback) => {
@@ -33,5 +33,5 @@ exports.extractToken = (req, callback) => {
       if (err) return reject(err)
       resolve(token)
     })
-  })
+  }).asCallback(callback)
 }
