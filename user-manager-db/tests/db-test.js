@@ -2,13 +2,22 @@ const test = require('ava')
 const debug = require('debug')('user-manager:db:test')
 const utils = require('user-manager-utils')
 const Db = require('../')
-const config = require('../../config')
 const fixtures = require('./fixtures')
 
-config.db.database = 'user_manager_db_test'
-config.db.logging = (msg) => debug(msg)
-
-const db = new Db(config.db)
+const db = new Db({
+  database: 'user_manager_db_test',
+  username: 'root',
+  password: '',
+  host: 'localhost',
+  dialect: 'postgres',
+  pool: {
+    max: 10,
+    min: 0,
+    idle: 10000
+  },
+  logging: (msg) => debug(msg),
+  setup: false
+})
 
 test.beforeEach(async t => {
   await db.setup()

@@ -2,13 +2,11 @@ const Promise = require('bluebird')
 const utils = require('user-manager-utils')
 const setupSequelize = require('./setupSequelize')
 const getModels = require('../models')
-const defaults = require('../../config')
 
 class Db {
-  constructor (config = defaults.db) {
-    this.config = config
-    this.models = getModels(this.config)
-    this.sequelize = setupSequelize(this.config)
+  constructor (options) {
+    this.models = getModels(options)
+    this.sequelize = setupSequelize(options)
   }
 
   async saveGroup (group, callback) {
