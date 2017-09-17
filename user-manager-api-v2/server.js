@@ -1,23 +1,19 @@
-const { microGraphiql, microGraphql } = require("graphql-server-micro")
-const micro = require("micro")
-const { get, post, router } = require("microrouter")
+const express = require('express')
+const bodyParser = require('body-parser')
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
 const chalk = require('chalk')
-const cors = require('micro-cors')()
+const cors = require('cors')
 const schema = require("./schema")
 
+const app = express();
 const port = process.env.PORT || 3000
 
-const server = micro(
-  cors(
-    router(
-      get("/graphql", microGraphql({ schema })),
-      post("/graphql", microGraphql({ schema })),
-      get("/graphiql", microGraphiql({ endpointURL: "/graphql" })),
-      (req, res) => micro.send(res, 404, "not found")
-    )
-  )
-)
+app.use(cors())
+app.use('/graphql', bodyParser.json(), graphqlExpress({ schema }))
+app.use('/graphiql', graphiqlExpress({
+  endpointURL: '/graphql'
+}))
 
-server.listen(port, () => {
+app.listen(port, () => {
   console.log(`${chalk.green('[user-manager-api]')} Server listening on port ${port}`)
 })

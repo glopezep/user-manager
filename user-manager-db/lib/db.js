@@ -5,8 +5,9 @@ const getModels = require('../models')
 
 class Db {
   constructor (options) {
-    this.models = getModels(options)
-    this.sequelize = setupSequelize(options)
+    this.options = options
+    this.models = getModels(this.options)
+    this.sequelize = setupSequelize(this.options)
   }
 
   async saveGroup (group, callback) {

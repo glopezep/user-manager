@@ -9,13 +9,14 @@
   "author": "Guillermo Lopez",
   "license": "MIT",
   "dependencies": {
+    "apollo-server-express": "^1.1.2",
+    "body-parser": "^1.18.1",
     "chalk": "^2.1.0",
+    "cors": "^2.8.4",
+    "express": "^4.15.4",
     "graphql": "^0.11.3",
     "graphql-server-micro": "^1.1.0",
     "graphql-tools": "^1.2.2",
-    "micro": "^9.0.0",
-    "micro-cors": "0.0.4",
-    "microrouter": "^2.2.2",
     "user-manager-db": "file:../user-manager-db",
     "user-manager-utils": "file:../user-manager-utils"
   }

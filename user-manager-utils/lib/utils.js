@@ -35,3 +35,9 @@ exports.extractToken = (req, callback) => {
     })
   }).asCallback(callback)
 }
+
+exports.handleFatalError = (err) => {
+  console.log(err.message)
+  console.log(err.stack)
+  process.exit(1)
+}

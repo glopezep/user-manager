@@ -1,5 +1,5 @@
 const test = require('ava')
-const debug = require('debug')('user-manager:db:test')
+// const debug = require('debug')('user-manager:db:test')
 const utils = require('user-manager-utils')
 const Db = require('../')
 const fixtures = require('./fixtures')
@@ -9,13 +9,13 @@ const db = new Db({
   username: 'root',
   password: '',
   host: 'localhost',
-  dialect: 'postgres',
+  dialect: 'sqlite',
   pool: {
     max: 10,
     min: 0,
     idle: 10000
   },
-  logging: (msg) => debug(msg),
+  logging: () => {},
   setup: false
 })
 

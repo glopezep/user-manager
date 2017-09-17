@@ -71,7 +71,9 @@ module.exports = {
         return new Error('username or password incorrect')
       }
 
-      const token = await utils.signToken({ username }, config.secret)
+      const token = await utils.signToken({ username }, config.secret, {
+        expiresIn: '10m'
+      })
 
       return { token }
     },
