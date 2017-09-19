@@ -24,14 +24,6 @@ module.exports = `
     token: String!
   }
 
-  type Query {
-    group(id: String!): Group
-    groups: [Group]
-    user(username: String!): User
-    usersByGroup(groupId: String!): [User]
-    users: [User]
-  }
-
   input newGroup {
     name: String!
     description: String!
@@ -60,6 +52,14 @@ module.exports = `
     avatar: String
     isActive: Boolean
     groupId: String
+  }
+
+  type Query {
+    group(id: String!): Group
+    groups: [Group]
+    user(username: String!): User
+    usersByGroup(groupId: String!): [User]
+    users: [User]
   }
 
   type Mutation {

@@ -6,107 +6,120 @@ const client = createClient(config.client)
 
 module.exports = {
   Query: {
-    group: (rootValue, args) => {
-      client.getGroup(args.id, (err, group) => {
-        if (err) return err
+    group: async (rootValue, args) => {
+      try {
+        const group = await client.getGroup(args.id)
         return group
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
     groups: async (rootValue, args) => {
-      const res = await client.getGroups()
-      return res.body
-      // return client.getGroups((err, groups) => {
-      //   if (err) return err
-      //   return groups
-      // })
+      try {
+        const groups = await client.getGroups()
+        return groups
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    user: (rootValue, args) => {
-      client.getUser(args.username, (err, user) => {
-        if (err) return error
+    user: async (rootValue, args) => {
+      try {
+        const user = await client.getUser(args.username)
         return user
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
     users: async (rootValue, args) => {
-      const res = await client.getUsers()
-      return res.body
-      // client.getUsers((err, users) => {
-      //   console.log(users)
-      //   if (err) return err
-      //   return users
-      // })
+      try {
+        const users = await client.getUsers()
+        return users
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
     usersByGroup: async (rootValue, args) => {
-      client.getUsersByGroup(args.id, (err, users) => {
-        if (err) return err
+      try {
+        const users = await client.getUsersByGroup(args.id)
         return users
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     }
-
   },
 
   Mutation: {
     saveGroup: (rootValue, args) => {
-      client.saveGroup(args.group, (err, group) => {
-        if (err) return err
+
+    },
+
+    updateGroup: async (rootValue, args) => {
+      try {
+        const group = await client.updateGroup(args.id, args.group)
         return group
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    updateGroup: (rootValue, args) => {
-      client.updateGroup(args.id, args.group, (err, group) => {
-        if (err) return error
+    deleteGroup: async (rootValue, args) => {
+      try {
+        const group = await client.deleteGroup(args.id)
         return group
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    deleteGroup: (rootValue, args) => {
-      client.deleteGroup(args.id, (err, group) => {
-        if (err) return err
-        return group
-      })
-    },
-
-    saveUser: (rootValue, args) => {
-      client.saveUser(args.user, (err, user) => {
-        if (err) return err
+    saveUser: async (rootValue, args) => {
+      try {
+        const user = await client.saveUser(args.user)
         return user
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    updateUser: (rootValue, args) => {
-      client.updateUser(args.username, args.user, (err, user) => {
-        if (err) return err
+    updateUser: async (rootValue, args) => {
+      try {
+        const user = await client.updateUser(args.username, args.user)
         return user
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    deleteUser: (rootValue, args) => {
-      client.deleteUser(args.id, (err, user) => {
-        if (err) return err
+    deleteUser: async (rootValue, args) => {
+      try {
+        const user = await client.deleteUser(args.username)
         return user
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
-    authenticate: (rootValue, args) => {
-      const { username, password } = args
-
-      client.authenticate(username, password, (err, token) => {
-        if (err) return err
+    authenticate: async (rootValue, args) => {
+      try {
+        const { username, password } = args
+        const token = await client.authenticate(username, password)
         return { token }
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
     verifyToken: async (rootValue, args) => {
-      const decoded = await utils.verifyToken(args.token, config.secret)
-
-      client.getUser(decoded.username, (err, user) => {
-        if (err) return err
+      try {
+        const decoded = await utils.verifyToken(args.token, config.secret)
+        const user = await client.getUser(decoded.username)
         return user
-      })
+      } catch (e) {
+        return new Error(e.message)
+      }
     }
   }
 }
