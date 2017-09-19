@@ -1,23 +1,28 @@
 const http = require('http')
 const express = require('express')
-const path = require('path')
-const bodyParser = require('body-parser')
-const cookieParser = require('cookie-parser')
 const chalk = require('chalk')
-const debug = require('debug')('user-manager:frontend')
-const api = require('./api')
+const path = require('path')
+const bodyParser = require('body-parser');
+const { graphqlExpress, graphiqlExpress } = require('apollo-server-express')
+const schema = require('./schema');
 
 const app = express()
 const server = http.createServer(app)
-const port = process.env.PORT || 8000
+const port = process.env.PORT || 3000
 
-app.use(express.static(path.join(__dirname, 'public')))
 app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(cookieParser())
+app.use(express.static(path.join(__dirname, 'public')))
+app.use('/graphql', graphqlExpress({ schema: schema }));
+app.use('/graphiql', graphiqlExpress({ endpointURL: '/graphql' }));
 
-app.use('/api', api)
+app.get('/', (req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`)
+})
+
+app.get('/next', (req, res) => {
+  res.sendFile(`${__dirname}/public/index.html`)
+})
 
 server.listen(port, () => {
-  console.log(`${chalk.green('[user-manager-frontend]')} Server listening on port ${port}`)
+  console.log(`${chalk.green('[API]')} Server listening on port ${port}`)
 })

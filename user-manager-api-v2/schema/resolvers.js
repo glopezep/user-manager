@@ -49,7 +49,12 @@ module.exports = {
     },
 
     saveUser: async (rootValue, args) => {
+      for (let key in args.user) {
+        if (args.user[key] === '') args.user[key] = null
+      }
+
       const user = await db.saveUser(args.user)
+
       return JSON.parse(JSON.stringify(user))
     },
 

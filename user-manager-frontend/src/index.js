@@ -1,7 +1,15 @@
 import React from 'react'
+import page from 'page'
 import { render } from 'react-dom'
-import Page from './pages/Page'
 
 const container = document.getElementById('root')
 
-render(<Page/>, container)
+page('/', (ctx, next) => {
+  render(<h1>Home view</h1>, container)
+})
+
+page('/next', (ctx, next) => {
+  render(<h1>Next view</h1>, container)
+})
+
+page()
