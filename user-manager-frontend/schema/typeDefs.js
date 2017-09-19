@@ -4,6 +4,8 @@ module.exports = `
     name: String!
     description: String!
     users: [User]
+    updatedAt: String
+    createdAt: String
   }
 
   type User {

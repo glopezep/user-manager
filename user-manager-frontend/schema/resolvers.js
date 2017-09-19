@@ -13,11 +13,13 @@ module.exports = {
       })
     },
 
-    groups: (rootValue, args) => {
-      client.getGroups((err, groups) => {
-        if (err) return err
-        return groups
-      })
+    groups: async (rootValue, args) => {
+      const res = await client.getGroups()
+      return res.body
+      // return client.getGroups((err, groups) => {
+      //   if (err) return err
+      //   return groups
+      // })
     },
 
     user: (rootValue, args) => {
@@ -27,11 +29,14 @@ module.exports = {
       })
     },
 
-    users: (rootValue, args) => {
-      client.getUsers((err, users) => {
-        if (err) return err
-        return users
-      })
+    users: async (rootValue, args) => {
+      const res = await client.getUsers()
+      return res.body
+      // client.getUsers((err, users) => {
+      //   console.log(users)
+      //   if (err) return err
+      //   return users
+      // })
     },
 
     usersByGroup: async (rootValue, args) => {
