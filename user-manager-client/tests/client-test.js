@@ -39,10 +39,9 @@ test('client#saveGroup', async t => {
     .post('/save', group)
     .reply(201, group)
 
-  const response = await client.saveGroup(group)
+  const result = await client.saveGroup(group)
 
-  t.is(response.statusCode, 201)
-  t.deepEqual(response.body, group)
+  t.deepEqual(result, group)
 })
 
 test('client#getGroup', async t => {
@@ -53,10 +52,9 @@ test('client#getGroup', async t => {
     .get(`/${group.id}`)
     .reply(200, group)
 
-  const response = await client.getGroup(group.id)
+  const result = await client.getGroup(group.id)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, group)
+  t.deepEqual(result, group)
 })
 
 test('client#getGroups', async t => {
@@ -67,10 +65,9 @@ test('client#getGroups', async t => {
     .get('/list')
     .reply(200, groups)
 
-  const response = await client.getGroups()
+  const result = await client.getGroups()
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, groups)
+  t.deepEqual(result, groups)
 })
 
 test('client#updateGroup', async t => {
@@ -81,10 +78,9 @@ test('client#updateGroup', async t => {
     .put(`/${group.id}`, group)
     .reply(200, group)
 
-  const response = await client.updateGroup(group.id, group)
+  const result = await client.updateGroup(group.id, group)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, group)
+  t.deepEqual(result, group)
 })
 
 test('client#deleteGroup', async t => {
@@ -95,10 +91,9 @@ test('client#deleteGroup', async t => {
     .delete(`/${group.id}`)
     .reply(200, group)
 
-  const response = await client.deleteGroup(group.id)
+  const result = await client.deleteGroup(group.id)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, group)
+  t.deepEqual(result, group)
 })
 
 test('client#saveUser', async t => {
@@ -109,10 +104,9 @@ test('client#saveUser', async t => {
     .post('/save', user)
     .reply(201, user)
 
-  const response = await client.saveUser(user)
+  const result = await client.saveUser(user)
 
-  t.is(response.statusCode, 201)
-  t.deepEqual(response.body, user)
+  t.deepEqual(result, user)
 })
 
 test('client#getUser', async t => {
@@ -123,10 +117,9 @@ test('client#getUser', async t => {
     .get(`/${user.username}`)
     .reply(200, user)
 
-  const response = await client.getUser(user.username)
+  const result = await client.getUser(user.username)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, user)
+  t.deepEqual(result, user)
 })
 
 test('client#getUsers', async t => {
@@ -137,10 +130,9 @@ test('client#getUsers', async t => {
     .get('/list')
     .reply(200, users)
 
-  const response = await client.getUsers()
+  const result = await client.getUsers()
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, users)
+  t.deepEqual(result, users)
 })
 
 test('client#getUsersByGroup', async t => {
@@ -152,10 +144,9 @@ test('client#getUsersByGroup', async t => {
     .get(`/${group.id}/users`)
     .reply(200, users)
 
-  const response = await client.getUsersByGroup(group.id)
+  const result = await client.getUsersByGroup(group.id)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, users)
+  t.deepEqual(result, users)
 })
 
 test('client#updateUser', async t => {
@@ -166,10 +157,9 @@ test('client#updateUser', async t => {
     .put(`/${user.username}`, user)
     .reply(200, user)
 
-  const response = await client.updateUser(user.username, user)
+  const result = await client.updateUser(user.username, user)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, user)
+  t.deepEqual(result, user)
 })
 
 test('client#deleteUser', async t => {
@@ -180,10 +170,9 @@ test('client#deleteUser', async t => {
     .delete(`/${user.username}`)
     .reply(200, user)
 
-  const response = await client.deleteUser(user.username)
+  const result = await client.deleteUser(user.username)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, user)
+  t.deepEqual(result, user)
 })
 
 test('client#authenticate', async t => {
@@ -196,8 +185,7 @@ test('client#authenticate', async t => {
     .post('/', { username, password })
     .reply(200, token)
 
-  const response = await client.authenticate(user.username, user.password)
+  const result = await client.authenticate(user.username, user.password)
 
-  t.is(response.statusCode, 200)
-  t.deepEqual(response.body, token)
+  t.deepEqual(result, token)
 })

@@ -12,8 +12,7 @@ class Client {
       method: 'POST',
       uri: `${this.options.endpoints.groups}/save`,
       json: true,
-      body: group,
-      resolveWithFullResponse: true
+      body: group
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -23,8 +22,7 @@ class Client {
     const options = {
       method: 'GET',
       uri: `${this.options.endpoints.groups}/${id}`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -34,8 +32,7 @@ class Client {
     const options = {
       method: 'GET',
       uri: `${this.options.endpoints.groups}/list`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -46,8 +43,7 @@ class Client {
       method: 'PUT',
       uri: `${this.options.endpoints.groups}/${id}`,
       json: true,
-      body: data,
-      resolveWithFullResponse: true
+      body: data
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -57,8 +53,7 @@ class Client {
     const options = {
       method: 'DELETE',
       uri: `${this.options.endpoints.groups}/${id}`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -69,8 +64,7 @@ class Client {
       method: 'POST',
       uri: `${this.options.endpoints.users}/save`,
       json: true,
-      body: user,
-      resolveWithFullResponse: true
+      body: user
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -80,8 +74,7 @@ class Client {
     const options = {
       method: 'GET',
       uri: `${this.options.endpoints.users}/${username}`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -91,8 +84,7 @@ class Client {
     const options = {
       method: 'GET',
       uri: `${this.options.endpoints.users}/list`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -102,8 +94,7 @@ class Client {
     const options = {
       method: 'GET',
       uri: `${this.options.endpoints.users}/${id}/users`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -114,8 +105,7 @@ class Client {
       method: 'PUT',
       uri: `${this.options.endpoints.users}/${username}`,
       json: true,
-      body: data,
-      resolveWithFullResponse: true
+      body: data
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -125,8 +115,7 @@ class Client {
     const options = {
       method: 'DELETE',
       uri: `${this.options.endpoints.users}/${username}`,
-      json: true,
-      resolveWithFullResponse: true
+      json: true
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
@@ -140,8 +129,7 @@ class Client {
       body: {
         username,
         password
-      },
-      resolveWithFullResponse: true
+      }
     }
 
     return Promise.resolve(request(options)).asCallback(callback)
