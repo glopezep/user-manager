@@ -77,7 +77,7 @@ module.exports = {
       }
 
       const token = await utils.signToken({ username }, config.secret, {
-        expiresIn: '1m'
+        expiresIn: '15m'
       })
 
       return { token }
