@@ -143,6 +143,21 @@ test('client#getUsers', async t => {
   t.deepEqual(response.body, users)
 })
 
+test('client#getUsersByGroup', async t => {
+  const client = t.context.client
+  const users = fixtures.getUsers()
+  const group = fixtures.getGroup()
+
+  nock(options.endpoints.users)
+    .get(`/${group.id}/users`)
+    .reply(200, users)
+
+  const response = await client.getUsersByGroup(group.id)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, users)
+})
+
 test('client#updateUser', async t => {
   const client = t.context.client
   const user = fixtures.getUser()

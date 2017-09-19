@@ -98,6 +98,17 @@ class Client {
     return Promise.resolve(request(options)).asCallback(callback)
   }
 
+  getUsersByGroup (id, callback) {
+    const options = {
+      method: 'GET',
+      uri: `${this.options.endpoints.users}/${id}/users`,
+      json: true,
+      resolveWithFullResponse: true
+    }
+
+    return Promise.resolve(request(options)).asCallback(callback)
+  }
+
   updateUser (username, data, callback) {
     const options = {
       method: 'PUT',

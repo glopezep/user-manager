@@ -63,6 +63,24 @@ test('GET /list', async t => {
   t.deepEqual(response.body, groups)
 })
 
+test('GET /:id/users', async t => {
+  const group = fixtures.getGroup()
+  const users = fixtures.getUsers()
+  const url = t.context.url
+
+  const options = {
+    method: 'GET',
+    uri: `${url}/${group.id}/users`,
+    json: true,
+    resolveWithFullResponse: true
+  }
+
+  const response = await request(options)
+
+  t.is(response.statusCode, 200)
+  t.deepEqual(response.body, users)
+})
+
 test('PUT /:id', async t => {
   const data = fixtures.getGroup()
   const url = t.context.url

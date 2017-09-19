@@ -86,25 +86,22 @@ module.exports = {
       })
     },
 
-    authenticate: async (rootValue, args) => {
+    authenticate: (rootValue, args) => {
       const { username, password } = args
-      const auth = await client.authenticate(username, password)
 
-      if (!auth) {
-        return new Error('username or password incorrect')
-      }
-
-      const token = await utils.signToken({ username }, config.secret, {
-        expiresIn: '15m'
+      client.authenticate(username, password, (err, token) => {
+        if (err) return err
+        return { token }
       })
-
-      return { token }
     },
 
     verifyToken: async (rootValue, args) => {
       const decoded = await utils.verifyToken(args.token, config.secret)
-      const user = await client.getUser(decoded.username)
-      return user
+
+      client.getUser(decoded.username, (err, user) => {
+        if (err) return err
+        return user
+      })
     }
   }
 }

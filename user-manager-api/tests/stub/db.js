@@ -33,6 +33,10 @@ class Db {
     return Promise.resolve(fixtures.getUsers())
   }
 
+  getUsersByGroup (groupId) {
+    return Promise.resolve(fixtures.getUsers())
+  }
+
   updateUser (username, data) {
     return Promise.resolve(fixtures.getUser())
   }

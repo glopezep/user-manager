@@ -27,6 +27,12 @@ async function getGroups (req, res) {
   send(res, 200, groups)
 }
 
+async function getUsersByGroup (req, res) {
+  const id = req.params.id
+  const users = await db.getUsersByGroup(id)
+  send(res, 200, users)
+}
+
 async function updateGroup (req, res) {
   const id = req.params.id
   const data = await json(req)
@@ -44,6 +50,7 @@ module.exports = router(
   post('/save', saveGroup),
   get('/list', getGroups),
   get('/:id', getGroup),
+  get('/:id/users', getUsersByGroup),
   put('/:id', updateGroup),
   del('/:id', deleteGroup)
 )
