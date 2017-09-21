@@ -6,7 +6,6 @@ const fixtures = require('./fixtures')
 const options = {
   endpoints: {
     users: 'http://api.usermanager.test/users',
-    groups: 'http://api.usermanager.test/groups',
     auth: 'http://api.usermanager.test/auth'
   }
 }
@@ -35,8 +34,8 @@ test('client#saveGroup', async t => {
   const client = t.context.client
   const group = fixtures.getGroup()
 
-  nock(options.endpoints.groups)
-    .post('/save', group)
+  nock(options.endpoints.users)
+    .post('/groups/save', group)
     .reply(201, group)
 
   const result = await client.saveGroup(group)
@@ -48,8 +47,8 @@ test('client#getGroup', async t => {
   const client = t.context.client
   const group = fixtures.getGroup()
 
-  nock(options.endpoints.groups)
-    .get(`/${group.id}`)
+  nock(options.endpoints.users)
+    .get(`/groups/${group.id}`)
     .reply(200, group)
 
   const result = await client.getGroup(group.id)
@@ -61,8 +60,8 @@ test('client#getGroups', async t => {
   const client = t.context.client
   const groups = fixtures.getGroups()
 
-  nock(options.endpoints.groups)
-    .get('/list')
+  nock(options.endpoints.users)
+    .get('/groups/list')
     .reply(200, groups)
 
   const result = await client.getGroups()
@@ -74,8 +73,8 @@ test('client#updateGroup', async t => {
   const client = t.context.client
   const group = fixtures.getGroup()
 
-  nock(options.endpoints.groups)
-    .put(`/${group.id}`, group)
+  nock(options.endpoints.users)
+    .put(`/groups/${group.id}`, group)
     .reply(200, group)
 
   const result = await client.updateGroup(group.id, group)
@@ -87,8 +86,8 @@ test('client#deleteGroup', async t => {
   const client = t.context.client
   const group = fixtures.getGroup()
 
-  nock(options.endpoints.groups)
-    .delete(`/${group.id}`)
+  nock(options.endpoints.users)
+    .delete(`/groups/${group.id}`)
     .reply(200, group)
 
   const result = await client.deleteGroup(group.id)

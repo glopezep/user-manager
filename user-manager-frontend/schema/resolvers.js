@@ -54,7 +54,12 @@ module.exports = {
 
   Mutation: {
     saveGroup: (rootValue, args) => {
-
+      try {
+        const group = await client.saveGroup(args.group)
+        return group
+      } catch (e) {
+        return new Error(e.message)
+      }
     },
 
     updateGroup: async (rootValue, args) => {

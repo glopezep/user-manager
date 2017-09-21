@@ -10,7 +10,7 @@ class Client {
   saveGroup (group, callback) {
     const options = {
       method: 'POST',
-      uri: `${this.options.endpoints.groups}/save`,
+      uri: `${this.options.endpoints.users}/groups/save`,
       json: true,
       body: group
     }
@@ -21,7 +21,7 @@ class Client {
   getGroup (id, callback) {
     const options = {
       method: 'GET',
-      uri: `${this.options.endpoints.groups}/${id}`,
+      uri: `${this.options.endpoints.users}/groups/${id}`,
       json: true
     }
 
@@ -31,7 +31,7 @@ class Client {
   getGroups (callback) {
     const options = {
       method: 'GET',
-      uri: `${this.options.endpoints.groups}/list`,
+      uri: `${this.options.endpoints.users}/groups/list`,
       json: true
     }
 
@@ -41,7 +41,7 @@ class Client {
   updateGroup (id, data, callback) {
     const options = {
       method: 'PUT',
-      uri: `${this.options.endpoints.groups}/${id}`,
+      uri: `${this.options.endpoints.users}/groups/${id}`,
       json: true,
       body: data
     }
@@ -52,7 +52,7 @@ class Client {
   deleteGroup (id, callback) {
     const options = {
       method: 'DELETE',
-      uri: `${this.options.endpoints.groups}/${id}`,
+      uri: `${this.options.endpoints.users}/groups/${id}`,
       json: true
     }
 
