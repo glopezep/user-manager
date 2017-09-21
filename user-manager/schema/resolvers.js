@@ -11,7 +11,7 @@ module.exports = {
         const group = await client.getGroup(args.id)
         return group
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -20,7 +20,7 @@ module.exports = {
         const groups = await client.getGroups()
         return groups
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -29,7 +29,7 @@ module.exports = {
         const user = await client.getUser(args.username)
         return user
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -38,7 +38,7 @@ module.exports = {
         const users = await client.getUsers()
         return users
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -47,18 +47,18 @@ module.exports = {
         const users = await client.getUsersByGroup(args.id)
         return users
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     }
   },
 
   Mutation: {
-    saveGroup: (rootValue, args) => {
+    saveGroup: async (rootValue, args) => {
       try {
         const group = await client.saveGroup(args.group)
         return group
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -67,7 +67,7 @@ module.exports = {
         const group = await client.updateGroup(args.id, args.group)
         return group
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -76,7 +76,7 @@ module.exports = {
         const group = await client.deleteGroup(args.id)
         return group
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -85,7 +85,7 @@ module.exports = {
         const user = await client.saveUser(args.user)
         return user
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -94,7 +94,7 @@ module.exports = {
         const user = await client.updateUser(args.username, args.user)
         return user
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -103,7 +103,7 @@ module.exports = {
         const user = await client.deleteUser(args.username)
         return user
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -113,7 +113,7 @@ module.exports = {
         const token = await client.authenticate(username, password)
         return { token }
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     },
 
@@ -123,7 +123,7 @@ module.exports = {
         const user = await client.getUser(decoded.username)
         return user
       } catch (e) {
-        return new Error(e.message)
+        return new Error(e)
       }
     }
   }
