@@ -1,0 +1,14 @@
+postgresql_databases:
+  - name: user_manager_db
+    owner: root
+    hstore: yes
+
+postgresql_users:
+  - name: root
+    pass: root
+    encrypted: no
+
+postgresql_user_privileges:
+  - name: root
+    db: user_manager_db
+    priv: 'ALL'

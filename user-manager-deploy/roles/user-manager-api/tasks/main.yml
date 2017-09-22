@@ -1,0 +1,28 @@
+---
+- include: deps.yml
+- name: Copying user-manager-api
+  copy:
+    src=user-manager-api
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/user-manager-api
+    creates=/usr/local/user-manager-api/node_modules
+- name: Install systemd script
+  copy:
+    src=user-manager-api.service
+    dest=/lib/systemd/system
+- name: Install nginx config
+  copy:
+    src=user-manager-api.conf
+    dest=/etc/nginx/sites-enabled
+- name: Start user-manager-api
+  service:
+    name=user-manager-api
+    state=restarted
+    enabled=yes
+- name: Restart nginx
+  service:
+    name=nginx
+    state=reloaded

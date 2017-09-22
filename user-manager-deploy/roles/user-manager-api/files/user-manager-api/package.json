@@ -1,0 +1,33 @@
+{
+  "name": "user-manager-api",
+  "version": "1.0.0",
+  "description": "User Manager API Rest",
+  "scripts": {
+    "test": "NODE_ENV=test ava tests/*-test.js --verbose",
+    "users": "micro -p 5000 users.js",
+    "groups": "micro -p 5001 groups.js",
+    "groups-dev": "micro-dev -p 5001 groups.js",
+    "auth": "micro -p 5002 auth.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://www.github.com/glopezep/user-manager"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "micro": "^8.0.4",
+    "microrouter": "^2.2.2",
+    "user-manager-db": "file:../user-manager-db",
+    "user-manager-utils": "file:../user-manager-utils"
+  },
+  "devDependencies": {
+    "ava": "^0.22.0",
+    "eslint": "^4.6.1",
+    "micro-dev": "^1.2.3",
+    "proxyquire": "^1.8.0",
+    "request": "^2.81.0",
+    "request-promise-native": "^1.0.4",
+    "test-listen": "^1.0.2"
+  }
+}

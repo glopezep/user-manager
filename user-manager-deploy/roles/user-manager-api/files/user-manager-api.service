@@ -1,0 +1,14 @@
+[Unit]
+Description=User Manager API
+Afer=network.target
+
+[Service]
+Eviroment=NODE_ENV=production
+Type=simple
+User=root
+WorkingDirectory=/usr/local/src/user-manager-api
+ExecStart=/usr/bin/npn start
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
