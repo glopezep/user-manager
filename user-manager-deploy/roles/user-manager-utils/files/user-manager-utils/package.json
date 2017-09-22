@@ -1,0 +1,16 @@
+{
+  "name": "user-manager-utils",
+  "version": "1.0.2",
+  "description": "User Manger Utilities Module",
+  "main": "index.js",
+  "scripts": {
+    "test": "ava tests/*-js --verbose"
+  },
+  "author": "Guillermo Lopez",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "jsonwebtoken": "^8.0.0",
+    "token-extractor": "^0.1.6"
+  }
+}

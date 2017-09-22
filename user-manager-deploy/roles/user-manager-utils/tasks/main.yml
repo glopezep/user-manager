@@ -1,0 +1,11 @@
+---
+- include: deps.yml
+- name: Copying user-manager-utils
+  copy:
+    src=user-manager-utils
+    dest=/usr/local/src
+    mode=u=rwx,g=rwx,o=rx
+- name: Running npm install
+  command: npm install
+    chdir=/usr/local/src/user-manager-utils
+    creates=/usr/local/src/user-manager-utils/node_modules
