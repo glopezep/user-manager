@@ -1,3 +1,4 @@
 ---
 dependencies:
   - { role: geerlingguy.nodejs, nodejs_version: "8.x" }
+  - { role: user-manager-utils }

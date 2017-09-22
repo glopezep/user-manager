@@ -710,3 +710,63 @@ ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDREcwHIedi335sNVZwXlHKKoAIu1MaTXNkEVmWCziJ
 [  189.203709] cloud-init[1380]: Cloud-init v. 0.7.9 running 'modules:final' at Fri, 22 Sep 2017 00:58:55 +0000. Up 187.75 seconds.
 [  189.204638] cloud-init[1380]: ci-info: no authorized ssh keys fingerprints found for user ubuntu.
 [  189.204790] cloud-init[1380]: Cloud-init v. 0.7.9 finished at Fri, 22 Sep 2017 00:58:56 +0000. Datasource DataSourceNoCloud [seed=/dev/sdb][dsmode=net].  Up 189.19 seconds
+[ 8579.679055] sd 2:0:0:0: [sda] tag#7 Medium access timeout failure. Offlining disk!
+[ 8582.461228] sd 2:0:0:0: rejecting I/O to offline device
+[ 8582.471047] sd 2:0:0:0: rejecting I/O to offline device
+[ 8582.475944] Buffer I/O error on device sda1, logical block 1111616
+[ 8582.487078] Buffer I/O error on device sda1, logical block 1111617
+[ 8582.503653] Buffer I/O error on device sda1, logical block 1111618
+[ 8582.512256] Buffer I/O error on device sda1, logical block 1111619
+[ 8582.522238] Buffer I/O error on device sda1, logical block 1111620
+[ 8582.566422] Buffer I/O error on device sda1, logical block 1111621
+[ 8582.599272] Buffer I/O error on device sda1, logical block 1111622
+[ 8582.608382] Buffer I/O error on device sda1, logical block 1111623
+[ 8582.609475] Buffer I/O error on device sda1, logical block 1111624
+[ 8582.610572] Buffer I/O error on device sda1, logical block 1111625
+[ 8582.611779] sd 2:0:0:0: rejecting I/O to offline device
+[ 8582.612709] sd 2:0:0:0: rejecting I/O to offline device
+[ 8582.613639] sd 2:0:0:0: rejecting I/O to offline device
+[ 8584.315494] sd 2:0:0:0: rejecting I/O to offline device
+[ 8584.352060] sd 2:0:0:0: rejecting I/O to offline device
+[ 8584.374127] sd 2:0:0:0: rejecting I/O to offline device
+[ 8584.401557] sd 2:0:0:0: rejecting I/O to offline device
+[ 8584.471244] sd 2:0:0:0: rejecting I/O to offline device
+[ 8589.867618] blk_update_request: I/O error, dev sda, sector 8870040
+[ 8589.883130] Buffer I/O error on device sda1, logical block 1108499
+[ 8589.900105] blk_update_request: I/O error, dev sda, sector 8869688
+[ 8589.901633] Buffer I/O error on device sda1, logical block 1108455
+[ 8589.904854] blk_update_request: I/O error, dev sda, sector 8869448
+[ 8589.914365] Buffer I/O error on device sda1, logical block 1108425
+[ 8589.925755] blk_update_request: I/O error, dev sda, sector 8869056
+[ 8589.927315] Buffer I/O error on device sda1, logical block 1108376
+[ 8589.956983] blk_update_request: I/O error, dev sda, sector 8868024
+[ 8589.962371] Buffer I/O error on device sda1, logical block 1108247
+[ 8590.003661] blk_update_request: I/O error, dev sda, sector 8872744
+[ 8590.004361] sd 2:0:0:0: rejecting I/O to offline device
+[ 8590.004369] Aborting journal on device sda1-8.
+[ 8590.004371] sd 2:0:0:0: rejecting I/O to offline device
+[ 8590.004374] JBD2: Error -5 detected when updating journal superblock for sda1-8.
+[ 8590.006332] sd 2:0:0:0: rejecting I/O to offline device
+[ 8590.006340] EXT4-fs error (device sda1): ext4_journal_check_start:56: Detected aborted journal
+[ 8590.006341] EXT4-fs (sda1): Remounting filesystem read-only
+[ 8590.006342] EXT4-fs (sda1): previous I/O error to superblock detected
+[ 8590.006344] sd 2:0:0:0: rejecting I/O to offline device
+[ 8590.404794] Buffer I/O error on device sda1, logical block 1108837
+[ 8590.441738] blk_update_request: I/O error, dev sda, sector 8873432
+[ 8590.447085] Buffer I/O error on device sda1, logical block 1108923
+[ 8590.448614] blk_update_request: I/O error, dev sda, sector 8874376
+[ 8590.501565] Buffer I/O error on device sda1, logical block 1109041
+[ 8590.535717] blk_update_request: I/O error, dev sda, sector 8874416
+[ 8590.537384] Buffer I/O error on device sda1, logical block 1109046
+[ 8590.551561] blk_update_request: I/O error, dev sda, sector 8872880
+[ 8590.591340] Buffer I/O error on device sda1, logical block 1108854
+[ 8684.443430] sd 2:0:0:0: rejecting I/O to offline device
+[ 8684.461810] EXT4-fs error (device sda1): ext4_find_entry:1450: inode #32304: comm bash: reading directory lblock 0
+[ 8684.479119] EXT4-fs (sda1): previous I/O error to superblock detected
+[ 8684.481818] sd 2:0:0:0: rejecting I/O to offline device
+[ 8692.867283] sd 2:0:0:0: rejecting I/O to offline device
+[ 8718.828458] sd 2:0:0:0: rejecting I/O to offline device
+[ 8718.831002] sd 2:0:0:0: rejecting I/O to offline device
+[ 8718.834590] sd 2:0:0:0: rejecting I/O to offline device
+[ 8718.845782] sd 2:0:0:0: rejecting I/O to offline device
+[ 8718.935451] sd 2:0:0:0: rejecting I/O to offline device

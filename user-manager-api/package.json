@@ -5,9 +5,7 @@
   "scripts": {
     "test": "NODE_ENV=test ava tests/*-test.js --verbose",
     "users": "micro -p 5000 users.js",
-    "groups": "micro -p 5001 groups.js",
-    "groups-dev": "micro-dev -p 5001 groups.js",
-    "auth": "micro -p 5002 auth.js"
+    "auth": "micro -p 5001 auth.js"
   },
   "repository": {
     "type": "git",
