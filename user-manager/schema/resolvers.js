@@ -125,6 +125,15 @@ module.exports = {
       } catch (e) {
         return new Error(e)
       }
+    },
+
+    updateToken: async (rootValue, args) => {
+      try {
+        const token = await utils.signToken({ args.username }, config.secret)
+        return { token }
+      } catch (e) {
+        return new Error(e.message)
+      }
     }
   }
 }

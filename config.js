@@ -16,8 +16,7 @@ module.exports = {
   client: {
     endpoints: {
       users: process.env.API_CLIENT_USERS_URL || 'http://localhost:5000',
-      groups: process.env.API_CLIENT_GROUPS_URL ||  'http://localhost:5001',
-      auth: process.env.API_CLIENT_AUTH_URL ||  'http://localhost:5002'
+      auth: process.env.API_CLIENT_AUTH_URL ||  'http://localhost:5001'
     }
   }
 }
